@@ -74,6 +74,13 @@ class _PlayerSetupScreenState extends State<PlayerSetupScreen> {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton.icon(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.redAccent,
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
                     onPressed: () {
                       final provider =
                       Provider.of<TicTacToeProvider>(context, listen: false);
@@ -83,21 +90,12 @@ class _PlayerSetupScreenState extends State<PlayerSetupScreen> {
                         _playerOController.text,
                       );
 
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const TicTacToeScreen(),
-                        ),
-                      );
+                      Navigator.pushNamed(context, '/tic_tac_toe');
                     },
                     icon: const Icon(Icons.play_arrow),
                     label: const Text(
                       "Start Game",
                       style: TextStyle(fontSize: 18),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.redAccent,
-                      foregroundColor: Colors.white,
                     ),
                   ),
                 ),

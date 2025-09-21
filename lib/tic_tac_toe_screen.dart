@@ -15,7 +15,7 @@ class _TicTacToeScreenState extends State<TicTacToeScreen> {
   @override
   initState() {
     super.initState();
-    Provider.of<TicTacToeProvider>(context, listen: false).resetGame();
+    Provider.of<TicTacToeProvider>(context, listen: false).newGame();
   }
 
   @override
@@ -91,11 +91,9 @@ class _TicTacToeScreenState extends State<TicTacToeScreen> {
 
                   const SizedBox(height: 24),
 
-                  /// Game Board
                   _buildGameBoard(context, game),
                   const SizedBox(height: 24),
 
-                  /// Result message
                   if (game.gameEnded)
                     Container(
                       width: double.infinity,
@@ -166,12 +164,7 @@ class _TicTacToeScreenState extends State<TicTacToeScreen> {
           child: ElevatedButton.icon(
             onPressed: () {
               game.newGame();
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const PlayerSetupScreen(),
-                ),
-              );
+              Navigator.pushNamed(context, '/setup');
             },
             icon: const Icon(Icons.fiber_new),
             label: const Text("New Game"),
@@ -222,6 +215,7 @@ class _TicTacToeScreenState extends State<TicTacToeScreen> {
               border: Border.all(color: Colors.grey.shade300),
               boxShadow: isHighlighted
                   ? [
+
                 BoxShadow(
                   color: Colors.amber.withOpacity(0.5),
                   blurRadius: 10,

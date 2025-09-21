@@ -104,6 +104,7 @@ class TicTacToeProvider extends ChangeNotifier {
     board = List.filled(9, '');
     currentPlayer = 'X';
     winner = null;
+    winnerName = "";
     gameEnded = false;
     winningCells = [];
     notifyListeners();
